@@ -1,0 +1,128 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <title>MadelineGarden</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <header th:fragment="header" class="header">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+                <!-- Container logo -->
+                <div class="container">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand me-2" href="/">
+                        <img src="img/logo.png"
+                             width="16" height="16"
+                             alt=""
+                             style="margin-top: -1px;"/>
+                        Madeline Garden
+                    </a>
+                    <!-- Centrar -->
+                    <div class="collapse navbar-collapse justify-content-center">
+                        <!-- Links -->
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">[[#{plantilla.inicio}]]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/productos/catalogo">[[#{plantilla.catalogo}]]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/arreglos/catalogo">[[#{plantilla.arreglos}]]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="https://goo.gl/maps/LANqVx9Ea3HyjfcM7">[[#{plantilla.ubi}]]</a>
+                            </li>
+                        </ul>
+                        <!-- Links -->
+                    <div class="col-md-3 text-white text-end">
+                        <ul class="navbar-nav">
+                            <a class="nav-link" th:href="@{/(lang=es)}">ES </a>
+                            <a class="nav-link" th:href="@{/(lang=en)}">EN</a>
+                        </ul>
+                    </div> 
+                    </div>
+                    <!-- Carrito buscar Usuario -->
+                    <div class="d-flex align-items-center">
+                        <ul class="navbar-nav d-flex flex-row">
+                            <li class="nav-item me-3 me-lg-0">
+                                <div class="search-container">
+                                    <form action="/search">
+                                      <input type="text" placeholder="Search..." name="search" class="form-control">
+                                    </form>
+                                  </div>
+                            </li>
+                            <li class="nav-item me-2 me-lg-0">
+                                <a class="nav-link" th:href="@{/carrito/listado}">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item me-3 me-lg-0 p-0 dropdown">
+                                <a  class="nav-link dropdown-toggle p-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="/ingresar/">[[#{plantilla.ingresar}]]</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/registrarse/">[[#{plantilla.registro}]]</a>
+                                    </li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/perfil/">[[#{plantilla.perfil}]]</a>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <form th:action="@{/logout}" method="post" class="mb-0">
+                                                <li class="dropdown-item btn" onclick="this.parentNode.submit();">
+                                                    [[#{plantilla.salir}]]
+                                                </li>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Carrito buscar Usuario -->
+                        </ul>
+                    </div>
+                    <!-- Centrar -->
+                </div>
+                <!-- Container logo -->
+            </nav>
+            <!-- Navbar -->
+            <!<!-- Cambio -->
+        </header>
+
+        <footer th:fragment="footer" class="footer">
+            <div class="bd-footer container-fluid pt-1" style="background-color: hsl(216, 25%, 95.1%); ">
+                <div class="row p-7 text-black pt-2"  >
+                    <div class="col-xs-12 col-md-6 col-lg-3 ">
+                        <p class="h3 text-black">[[#{plantilla.ubi}]]</p>
+                        <a class="text-decoration-none" href="" target="_blank">[[#{plantilla.direc}]]</a>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.7027995555395!2d-90.48605099999999!3d14.6728003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858998625446273f%3A0x5e89145b35ef3282!2s25%20Calle%2C%20Cdad.%20de%20Guatemala%2C%20Guatemala!5e0!3m2!1ses!2scr!4v1682576586374!5m2!1ses!2scr" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="col-xs-12 col-md-6  col-lg-3">
+                        <p class="mb-3 h3 text-black">[[#{plantilla.contactos}]]</p>
+                        <div class="mb-3" >
+                            <a href="https://www.facebook.com/madelingardengt" class="text-decoration-none h4 fab fa-facebook p-2"target="_blank"></a>
+                            <a href="https://www.instagram.com/madelinegardengt/" class="text-decoration-none h4 fab fa-instagram p-2"target="_blank"></a>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-xs-12">
+                        <p class="text-black h5">[[#{plantilla.sobre}]]</p>
+                        <p class="text-black">[[#{plantilla.expli}]]</p>
+                    </div>
+                </div> 
+            </div>
+        </footer>
+    </body>
+</html>
+
+

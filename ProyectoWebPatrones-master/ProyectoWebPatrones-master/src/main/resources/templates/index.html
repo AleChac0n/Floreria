@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Inicio || MadelineGarden</title>
+        <link rel="shortcut icon" href="img/4086239380f418bfdadf7fd6ee566361.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+              <meta charset="UTF-8"/>
+    </head>
+    <!-- pt-5 para que se vea bien el header-->
+    <body class="pt-5" >
+        <!-- Header -->
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        <!-- Hero -->
+        <div class="p-5 text-center bg-image rounded-1" style="background-image: url(img/PngHero.png)" height="500px">
+            <h1 class="mb-3 text-white">[[#{plantilla.text1}]]</h1>
+            <h4 class="mb-3 text-white">[[#{plantilla.text2}]]</h4>
+            <a class="btn btn-dark btn-lg bg-ligh" href="#!" role="button">[[#{cliente.telefono}]]</a>
+            <a class="btn btn-dark btn-lg bg-ligh" href="productos/catalogo" role="button">[[#{plantilla.verproduc}]]</a>
+            <a class="btn btn-dark btn-lg bg-ligh" href="#!" role="button">WhatsApp</a>
+        </div>
+        <!-- Hero -->
+
+        <h2 class="p-5 text-center">[[#{plantilla.masvendido}]]</h2>
+
+        <!-- Card -->
+        <div class="container p-2">
+            <div class="container">            
+                <div class="row row-cols-4 justify-content-evenly" style="margin-bottom: 5%;">               
+                    <div class="card m-1" th:each="producto : ${productos}">                    
+                        <div class="card-body p-2">
+                            <div class="p-2">
+                                <img th:src="${producto.imagen}" width="70px"/>                        
+                                <h5 class="card-title">[[${producto.nombreproducto}]]</h5>                        
+                                <h6 class="card-subtitle mb-2 text-muted text-end">₡[[${producto.precio}]]</h6>                        
+                                <a class="card-link text-decoration-none" th:href="@{/carrito/agregar/} + ${producto.idProducto}">[[#{productos.comprar}]]</a>                        
+                                <p class="card-text">[[${producto.descripcion}]]</p>
+                            </div>            
+                        </div>                
+                    </div>            
+                </div>        
+            </div>
+        </div>
+        <!-- Card -->
+
+
+        <!-- Footer -->
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+        <!-- Footer -->   
+    </body>
+</html>
